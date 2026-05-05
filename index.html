@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigiMarketing Art | End-to-End Automated Creative Pipelines</title>
+    <title>DigiMarketing Art | Automated Social Media Growth for Brands</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +56,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <style>
-        /* Tech-Noir Utilities */
         body {
             background-color: #0a0a0a;
             color: #e5e5e5;
@@ -101,11 +100,6 @@
         .glass-card:nth-child(5) { animation-delay: 0.5s; }
         .glass-card:nth-child(6) { animation-delay: 0.6s; }
 
-        .card-glow {
-            position: relative;
-            overflow: hidden;
-        }
-
         .card-glow::before {
             content: '';
             position: absolute;
@@ -135,10 +129,6 @@
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
-        }
-
-        .text-gradient-slow {
-            animation-duration: 5s;
         }
 
         .btn-glow {
@@ -216,7 +206,6 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Custom Animation Classes */
         .animate-float {
             animation: float 6s ease-in-out infinite;
         }
@@ -234,48 +223,15 @@
             0%, 100% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); }
             50% { box-shadow: 0 0 40px rgba(0, 242, 254, 0.6); }
         }
-
-        .animate-gradient {
-            background-size: 200% 200%;
-            animation: gradient-shift 3s ease infinite;
-        }
-
-        .animate-slide-up {
-            animation: slide-up 0.8s ease-out forwards;
-        }
-
-        @keyframes slide-up {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
-        .stagger-4 { animation-delay: 0.4s; }
-        .stagger-5 { animation-delay: 0.5s; }
     </style>
 </head>
 <body class="antialiased selection:bg-neon-purple selection:text-white">
 
-    <!-- Background Neural Animation -->
     <canvas id="canvas-container"></canvas>
-    
-    <!-- Data Rain Animation -->
     <canvas id="data-rain"></canvas>
     
-    <!-- Hero Background Image (Desktop) -->
     <img src="hero.jpeg" alt="" class="hidden md:block fixed inset-0 w-full h-full object-cover -z-10">
-    
-    <!-- Hero Background Image (Mobile) -->
     <img src="hero-mob.jpeg" alt="" class="md:hidden fixed inset-0 w-full h-full object-cover -z-10">
-    
     <div class="fixed inset-0 bg-black/60 -z-10"></div>
 
     <!-- Navigation -->
@@ -290,18 +246,16 @@
             <div class="hidden md:flex items-center gap-1">
                 <a href="#home" class="px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium text-white hover:text-neon-cyan transition-colors">Home</a>
                 <a href="#gallery" class="px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium text-white hover:text-neon-cyan transition-colors">Gallery</a>
-                <a href="#video-reels" class="px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium text-white hover:text-neon-cyan transition-colors">Video</a>
+                <a href="#video-reels" class="px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium text-white hover:text-neon-cyan transition-colors">Video to Reels</a>
                 <a href="#pricing" class="px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium text-white hover:text-neon-cyan transition-colors">Pricing</a>
                 <a href="#contact" class="px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium text-white border border-white/20 rounded-full hover:bg-white/10 transition-colors">Contact</a>
             </div>
-            <!-- Mobile Menu Button -->
             <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center" onclick="toggleMobileMenu()">
                 <i data-lucide="menu" class="w-6 h-6 text-white"></i>
             </button>
         </div>
     </nav>
 
-    <!-- Mobile Menu Dropdown -->
     <div id="mobile-menu" class="fixed inset-0 bg-noir-900 z-40 hidden flex-col items-center justify-center gap-8 pt-20">
         <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center">
             <i data-lucide="x" class="w-8 h-8 text-white"></i>
@@ -313,7 +267,7 @@
         <a href="#contact" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-neon-cyan">Contact</a>
     </div>
 
-    <!-- SECTION 1: THE MAIN STAGE (HERO) -->
+    <!-- SECTION 1: HERO -->
     <section id="home" class="relative h-screen min-h-[100vh] flex items-center justify-center px-4 sm:px-6 overflow-hidden pt-16">
         <div class="max-w-5xl mx-auto text-center relative z-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card mb-8 text-sm font-medium text-neon-cyan border-neon-cyan/30" data-aos="fade-down" data-aos-delay="200">
@@ -321,116 +275,126 @@
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-neon-cyan"></span>
                 </span>
-                The Art of Automation
+                Now accepting 3 brands for Q3 2026
             </div>
             
             <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-black tracking-tighter mb-4 md:mb-6 leading-[1.1]" data-aos="fade-up" data-aos-delay="400">
-                AI-Powered Social Media<br class="hidden md:block">
-                <span class="text-gradient">Create Automatically.</span>
+                Never Worry About<br class="hidden md:block">
+                <span class="text-gradient">Social Media Again.</span>
             </h1>
             
             <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 font-light max-w-2xl md:max-w-3xl mx-auto mb-6 md:mb-10 leading-relaxed px-4" data-aos="fade-up" data-aos-delay="600">
-                End-to-End Automated Social Media Creative Pipelines. We engineer autonomous workflows using AI and programmatic post-production to design, render, and deploy breathtaking brand assets directly to your feeds. 
+                We build automated content pipelines that create, brand, and post stunning social media creatives for you — every single day, with zero effort on your part.
             </p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4" data-aos="fade-up" data-aos-delay="800">
                 <a href="#contact" class="btn-glow w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-display font-bold rounded-full hover:scale-105 transition-transform flex items-center justify-center gap-2">
-                    Automate My Brand's Narrative <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                    Scale My Brand's Social Media <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                 </a>
             </div>
+            
+            <p class="text-xs text-gray-500 mt-6" data-aos="fade-up" data-aos-delay="1000">No contracts. Cancel anytime. Results in 7 days or less.</p>
         </div>
         
-        <!-- Ambient Glow -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-purple/20 rounded-full blur-[120px] pointer-events-none"></div>
     </section>
 
-    <!-- SECTION 6: THE TECHNICAL STACK (TRUST BAR) -->
+    <!-- TRUST BAR -->
     <section class="py-6 sm:py-8 md:py-10 border-y border-white/5 bg-noir-800/30 backdrop-blur-sm" data-aos="fade-up" data-aos-delay="100">
         <div class="max-w-7xl mx-auto px-6">
-            <p class="text-center text-xs tracking-widest text-gray-500 uppercase font-medium mb-6" data-aos="fade-up">Powered by the ultimate automation stack</p>
+            <p class="text-center text-xs tracking-widest text-gray-500 uppercase font-medium mb-6" data-aos="fade-up">Built on enterprise-grade automation technology</p>
             <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="workflow" class="text-orange-500"></i> n8n</div>
-                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="sparkles" class="text-blue-400"></i> Artificial Intelligence</div>
-                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="film" class="text-green-400"></i> FFmpeg</div>
-                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="image" class="text-yellow-400"></i> ImageKit <span class="text-gray-500 text-sm">kie.ai</span></div>
-                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="instagram" class="text-pink-500"></i> Graph API</div>
+                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="workflow" class="text-orange-500"></i> n8n Automation</div>
+                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="sparkles" class="text-blue-400"></i> AI Generation</div>
+                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="film" class="text-green-400"></i> Video Processing</div>
+                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="image" class="text-yellow-400"></i> Smart Branding</div>
+                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="instagram" class="text-pink-500"></i> Direct Publishing</div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: WHY US (THE EDGE) -->
+    <!-- WHY US -->
     <section class="py-24 px-6 relative" data-aos="fade-up">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Manual Posting is <span class="text-red-500 line-through decoration-red-500/50">Dead</span>.</h2>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Still Posting <span class="text-red-500 line-through decoration-red-500/50">Manually</span>?</h2>
                     <p class="text-xl text-gray-300 mb-6 font-light leading-relaxed">
-                        Welcome to the era of <strong class="text-white font-medium">Dynamic Branding</strong>. We don't just schedule generic posts; we architect logic.
+                        You're leaving money on the table. Inconsistent posting, last-minute design chaos, and hiring freelancers who don't get your brand — it all ends today.
                     </p>
                     <p class="text-gray-400 mb-8 leading-relaxed">
-                        Every asset is generated from scratch, passed through programmatic FFmpeg pipelines to hard-code your precise corporate typography, drop in your SVG logos, and apply cinematic LUT filters. It is a zero-touch, high-fidelity render engine dedicated to your aesthetic.
+                        DigiMarketing Art replaces your entire content workflow. One setup. Your brand guidelines baked into every post. And a system that runs 24/7 while you focus on growing your business.
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
                             <div class="mt-1 bg-neon-cyan/20 p-1 rounded text-neon-cyan"><i data-lucide="check" class="w-4 h-4"></i></div>
-                            <span class="text-gray-300">No human error. No missed deadlines.</span>
+                            <span class="text-gray-300">Never miss a posting day again — automated, guaranteed.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="mt-1 bg-neon-cyan/20 p-1 rounded text-neon-cyan"><i data-lucide="check" class="w-4 h-4"></i></div>
-                            <span class="text-gray-300">Pixel-perfect logo placement & typography via FFmpeg.</span>
+                            <span class="text-gray-300">Your logo, your fonts, your colors — on every single post.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="mt-1 bg-neon-cyan/20 p-1 rounded text-neon-cyan"><i data-lucide="check" class="w-4 h-4"></i></div>
-                            <span class="text-gray-300">Infinite scalable creative output.</span>
+                            <span class="text-gray-300">Scale from 5 posts/week to 30+ without hiring a team.</span>
                         </li>
                     </ul>
                 </div>
                 <div class="relative">
                     <div class="glass-card p-8 rounded-2xl relative z-10 border-l-4 border-l-neon-purple">
-                        <pre class="text-sm text-gray-300 font-mono overflow-x-auto"><code>// The Art of Automation.js
-const pipeline = new DigiMarketingArt();
-
-await pipeline.init({
-  brain: 'Artificial Intelligence',
-  renderEngine: 'FFmpeg-Dynamic',
-  branding: 'Strict-Guidelines',
-  target: ['Socials', 'Social Media']
-});
-
-pipeline.runOnSchedule('0 9 * * *'); 
-// Result: Flawless execution.</code></pre>
+                        <div class="space-y-4 font-mono text-sm">
+                            <div class="flex items-center gap-3 text-gray-500">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span>Mon — Your pipeline goes live</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-500">
+                                <i data-lucide="image" class="w-4 h-4"></i>
+                                <span>Tue — 7 branded creatives auto-posted</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-500">
+                                <i data-lucide="trending-up" class="w-4 h-4"></i>
+                                <span>Wed — Engagement up 40%</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-500">
+                                <i data-lucide="repeat" class="w-4 h-4"></i>
+                                <span>Thu — System runs while you sleep</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-neon-cyan">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                <span>Sun — 30 posts live. You did nothing.</span>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Decorative blur -->
                     <div class="absolute top-10 right-10 w-full h-full bg-neon-cyan/10 rounded-2xl blur-3xl -z-10"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Automation Gallery -->
+    <!-- GALLERY -->
     <section id="gallery" class="py-24 px-6 overflow-hidden" data-aos="fade-up">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Automation Gallery</h2>
-                <p class="text-gray-400">Real content created by our pipelines.</p>
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Your Future Feed, Automated</h2>
+                <p class="text-gray-400">Every creative below was AI-generated, branded, and posted automatically — no human hands needed.</p>
             </div>
         </div>
         <div class="carousel-container">
             <div class="carousel-track" id="auto-carousel">
-                <img src="ad1.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad2.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad3.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad4.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad5.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad6.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad7.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad1.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad2.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad3.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad4.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad5.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad6.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
-                <img src="ad7.png" alt="Generated Content" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad1.png" alt="Instagram Story Template" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad2.png" alt="Product Showcase Post" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad3.png" alt="Promotional Campaign Creative" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad4.png" alt="Brand Awareness Post" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad5.png" alt="Engagement-Driven Design" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad6.png" alt="Seasonal Campaign Template" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad7.png" alt="Carousel Post Design" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad1.png" alt="Instagram Story Template" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad2.png" alt="Product Showcase Post" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad3.png" alt="Promotional Campaign Creative" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad4.png" alt="Brand Awareness Post" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad5.png" alt="Engagement-Driven Design" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad6.png" alt="Seasonal Campaign Template" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
+                <img src="ad7.png" alt="Carousel Post Design" class="carousel-img cursor-pointer" onclick="openModal(this.src)">
             </div>
         </div>
     </section>
@@ -443,107 +407,103 @@ pipeline.runOnSchedule('0 9 * * *');
         <img id="modal-img" src="" class="max-w-[90vw] max-h-[90vh] object-contain rounded-xl">
     </div>
 
-    <!-- SECTION 2: HOW IT WORKS (TECHNICAL WORKFLOW) -->
+    <!-- WORKFLOW -->
     <section class="py-24 px-6 bg-noir-800/50" data-aos="fade-up">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">The Neural Workflow</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Four sophisticated layers operating in perfect harmony to produce production-level content without human intervention.</p>
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">From Idea to Published — On Autopilot</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Four simple steps. Zero manual work. Your brand content runs itself.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Step 1 -->
                 <div class="glass-card p-8 rounded-2xl relative group">
                     <div class="absolute top-0 right-0 p-6 text-6xl font-display font-black text-white/5 group-hover:text-neon-cyan/10 transition-colors">01</div>
                     <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mb-6 border border-white/10 text-blue-400">
-                        <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        <i data-lucide="lightbulb" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold mb-3 text-white">Neural Ideation</h3>
+                    <h3 class="text-xl font-display font-bold mb-3 text-white">Smart Idea Generation</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">
-                        n8n triggers Artificial Intelligence AI to formulate hyper-targeted prompts, captions, and concepts based on your industry's real-time trends and data.
+                        Our system studies your industry, audience, and trending topics to create content ideas that actually get engagement.
                     </p>
                 </div>
 
-                <!-- Step 2 -->
                 <div class="glass-card p-8 rounded-2xl relative group">
                     <div class="absolute top-0 right-0 p-6 text-6xl font-display font-black text-white/5 group-hover:text-neon-purple/10 transition-colors">02</div>
                     <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-6 border border-white/10 text-purple-400">
-                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                        <i data-lucide="palette" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold mb-3 text-white">Cinematic Generation</h3>
+                    <h3 class="text-xl font-display font-bold mb-3 text-white">Instant Creative Design</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">
-                        The prompts are fed into advanced image rendering engines. Raw, breathtaking visual assets are synthesized to match your brand's core aesthetic.
+                        Beautiful, scroll-stopping visuals are generated automatically — tailored to your brand's look and feel.
                     </p>
                 </div>
 
-                <!-- Step 3 -->
                 <div class="glass-card p-8 rounded-2xl relative group">
                     <div class="absolute top-0 right-0 p-6 text-6xl font-display font-black text-white/5 group-hover:text-neon-cyan/10 transition-colors">03</div>
                     <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center mb-6 border border-white/10 text-neon-cyan">
-                        <i data-lucide="layers" class="w-6 h-6"></i>
+                        <i data-lucide="shield" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold mb-3 text-white">Post-Production</h3>
+                    <h3 class="text-xl font-display font-bold mb-3 text-white">Auto-Brand Application</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">
-                        The magic layer. FFmpeg programmatically overlays your logo, injects dynamic text, and applies uniform cinematic filters to ensure absolute brand compliance.
+                        Your logo, fonts, and brand colors are applied automatically. Every post looks like it came from your design team.
                     </p>
                 </div>
 
-                <!-- Step 4 -->
                 <div class="glass-card p-8 rounded-2xl relative group">
                     <div class="absolute top-0 right-0 p-6 text-6xl font-display font-black text-white/5 group-hover:text-neon-magenta/10 transition-colors">04</div>
                     <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-red-500/20 flex items-center justify-center mb-6 border border-white/10 text-neon-magenta">
-                        <i data-lucide="radio-tower" class="w-6 h-6"></i>
+                        <i data-lucide="send" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold mb-3 text-white">Autonomous Distro</h3>
+                    <h3 class="text-xl font-display font-bold mb-3 text-white">Scheduled Publishing</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">
-                        The final masterpiece is beamed directly to social media platforms via Graph API on a surgically precise schedule. Zero clicks required.
+                        Content goes live at optimal times across your social accounts. You wake up to a fully managed presence.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5: CLIENT ROI/BENEFIT -->
+    <!-- ROI / BENEFITS -->
     <section class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center p-6">
                     <div class="mx-auto w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
-                        <i data-lucide="zap-off" class="w-8 h-8 text-neon-cyan"></i>
+                        <i data-lucide="clock" class="w-8 h-8 text-neon-cyan"></i>
                     </div>
-                    <h4 class="text-xl font-display font-bold mb-2">Zero Human Friction</h4>
-                    <p class="text-gray-400 text-sm">Cut the endless approval loops and back-and-forth. Go from intelligent prompt to published masterpiece instantly.</p>
+                    <h4 class="text-xl font-display font-bold mb-2">Save 20+ Hours Every Week</h4>
+                    <p class="text-gray-400 text-sm">Stop juggling designers, copywriters, and scheduling tools. Your entire content machine runs itself while you focus on revenue.</p>
                 </div>
                 <div class="text-center p-6">
                     <div class="mx-auto w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
-                        <i data-lucide="shield-check" class="w-8 h-8 text-neon-purple"></i>
+                        <i data-lucide="eye" class="w-8 h-8 text-neon-purple"></i>
                     </div>
-                    <h4 class="text-xl font-display font-bold mb-2">Absolute Brand Consistency</h4>
-                    <p class="text-gray-400 text-sm">Logos, fonts, and hex codes are mathematically applied. Every frame perfectly adheres to your visual identity.</p>
+                    <h4 class="text-xl font-display font-bold mb-2">Always On-Brand, Every Time</h4>
+                    <p class="text-gray-400 text-sm">Your brand identity is locked into the system. Logos, colors, fonts — applied flawlessly to every post, forever.</p>
                 </div>
                 <div class="text-center p-6">
                     <div class="mx-auto w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10">
-                        <i data-lucide="clock-4" class="w-8 h-8 text-neon-magenta"></i>
+                        <i data-lucide="rocket" class="w-8 h-8 text-neon-magenta"></i>
                     </div>
-                    <h4 class="text-xl font-display font-bold mb-2">24/7 Relevance</h4>
-                    <p class="text-gray-400 text-sm">Your marketing engine never sleeps. Maintain a dominant, relentless presence across platforms while you focus on scaling.</p>
+                    <h4 class="text-xl font-display font-bold mb-2">Outpost Every Competitor</h4>
+                    <p class="text-gray-400 text-sm">While they scramble to post once a week, you're publishing daily with premium quality. Dominance is just a pipeline away.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Video to Reels Automation -->
+    <!-- VIDEO TO REELS -->
     <section id="video-reels" class="py-24 px-6 bg-noir-800/50" data-aos="fade-up">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Video to Reels Automation</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Turn long-form content into scroll-stopping Reels automatically.</p>
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Turn Long Videos Into Viral Reels — Automatically</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Your long-form content already has gold inside it. We extract the best moments, add subtitles, and format them for Reels — so you get 10x more reach from every video.</p>
             </div>
 
             <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-80 grayscale hover:grayscale-0 transition-all duration-500 mb-16">
-                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="code" class="text-green-400"></i> Python</div>
-                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="mic" class="text-yellow-400"></i> Whisper</div>
-                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="film" class="text-blue-400"></i> FFmpeg</div>
+                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="brain" class="text-green-400"></i> AI-Powered</div>
+                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="mic" class="text-yellow-400"></i> Auto Transcription</div>
+                <div class="flex items-center gap-2 font-display font-bold text-xl"><i data-lucide="film" class="text-blue-400"></i> Smart Editing</div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
@@ -552,31 +512,31 @@ pipeline.runOnSchedule('0 9 * * *');
                     <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mb-6 border border-white/10 text-blue-400">
                         <i data-lucide="upload" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold mb-3 text-white">Upload</h3>
+                    <h3 class="text-xl font-display font-bold mb-3 text-white">Drop Your Video</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">
-                        Upload your long-form video content.
+                        Upload any long-form content — podcasts, webinars, tutorials, or interviews.
                     </p>
                 </div>
 
                 <div class="glass-card p-8 rounded-2xl relative group">
                     <div class="absolute top-0 right-0 p-6 text-6xl font-display font-black text-white/5 group-hover:text-neon-purple/10 transition-colors">02</div>
                     <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mb-6 border border-white/10 text-purple-400">
-                        <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        <i data-lucide="search" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold mb-3 text-white">Analyze</h3>
+                    <h3 class="text-xl font-display font-bold mb-3 text-white">AI Finds the Gold</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">
-                        AI identifies key moments via Whisper transcript.
+                        AI transcribes your video and identifies the most engaging, shareable moments automatically.
                     </p>
                 </div>
 
                 <div class="glass-card p-8 rounded-2xl relative group">
                     <div class="absolute top-0 right-0 p-6 text-6xl font-display font-black text-white/5 group-hover:text-neon-cyan/10 transition-colors">03</div>
                     <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center mb-6 border border-white/10 text-neon-cyan">
-                        <i data-lucide="film" class="w-6 h-6"></i>
+                        <i data-lucide="scissors" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold mb-3 text-white">Process</h3>
+                    <h3 class="text-xl font-display font-bold mb-3 text-white">Auto-Edit & Format</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">
-                        FFmpeg converts to vertical + auto-cuts + subtitles + color grading.
+                        Clips are cut to vertical format, subtitles are added, and color grading is applied — all automatically.
                     </p>
                 </div>
 
@@ -585,21 +545,21 @@ pipeline.runOnSchedule('0 9 * * *');
                     <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-red-500/20 flex items-center justify-center mb-6 border border-white/10 text-neon-magenta">
                         <i data-lucide="download" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-xl font-display font-bold mb-3 text-white">Export</h3>
+                    <h3 class="text-xl font-display font-bold mb-3 text-white">Download & Post</h3>
                     <p class="text-sm text-gray-400 leading-relaxed">
-                        Download Reels-ready video.
+                        Get ready-to-post Reels in minutes — not hours. Just download and hit publish.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Video to Reels Features -->
+    <!-- FEATURES -->
     <section class="py-24 px-6" data-aos="fade-up">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Powerful Features</h2>
-                <p class="text-gray-400">Everything you need to create viral-ready Reels.</p>
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Everything You Need for Viral Short-Form Content</h2>
+                <p class="text-gray-400">Built for brands that want maximum reach with minimum effort.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -608,8 +568,8 @@ pipeline.runOnSchedule('0 9 * * *');
                         <i data-lucide="target" class="w-6 h-6 text-neon-cyan"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-display font-bold mb-2">Automatic Highlight Detection</h3>
-                        <p class="text-gray-400 text-sm">AI analyzes transcripts to identify key moments and automatically selects the most engaging segments for your Reels.</p>
+                        <h3 class="text-lg font-display font-bold mb-2">Auto-Detect Viral Moments</h3>
+                        <p class="text-gray-400 text-sm">AI scans your video transcript to find the most engaging parts — so you never miss a clip that could go viral.</p>
                     </div>
                 </div>
 
@@ -618,18 +578,18 @@ pipeline.runOnSchedule('0 9 * * *');
                         <i data-lucide="smartphone" class="w-6 h-6 text-neon-purple"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-display font-bold mb-2">Portrait/Vertical Conversion</h3>
-                        <p class="text-gray-400 text-sm">Seamlessly transform landscape footage to vertical 9:16 format with smart cropping and subject tracking.</p>
+                        <h3 class="text-lg font-display font-bold mb-2">Perfect Vertical Format, Every Time</h3>
+                        <p class="text-gray-400 text-sm">Landscape footage is smart-cropped to 9:16 vertical — keeping your subject centered and your frame clean.</p>
                     </div>
                 </div>
 
                 <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
                     <div class="w-12 h-12 rounded-xl bg-neon-magenta/20 flex items-center justify-center flex-shrink-0 border border-neon-magenta/30">
-                        <i data-lucide="closed-captioning" class="w-6 h-6 text-neon-magenta"></i>
+                        <i data-lucide="captions" class="w-6 h-6 text-neon-magenta"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-display font-bold mb-2">AI Subtitles (Burned In)</h3>
-                        <p class="text-gray-400 text-sm">Whisper-powered transcription with customizable subtitle styles, fonts, and positioning - permanently embedded in video.</p>
+                        <h3 class="text-lg font-display font-bold mb-2">Subtitles That Boost Engagement</h3>
+                        <p class="text-gray-400 text-sm">80% of viewers watch without sound. Our auto-generated subtitles keep people watching — and your retention high.</p>
                     </div>
                 </div>
 
@@ -638,8 +598,8 @@ pipeline.runOnSchedule('0 9 * * *');
                         <i data-lucide="palette" class="w-6 h-6 text-orange-500"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-display font-bold mb-2">Color Grading</h3>
-                        <p class="text-gray-400 text-sm">Professional color correction and LUT application to ensure consistent visual aesthetics across all content.</p>
+                        <h3 class="text-lg font-display font-bold mb-2">Cinematic Color Grading</h3>
+                        <p class="text-gray-400 text-sm">Professional color correction applied automatically so every Reel looks polished and matches your brand aesthetic.</p>
                     </div>
                 </div>
 
@@ -648,8 +608,8 @@ pipeline.runOnSchedule('0 9 * * *');
                         <i data-lucide="file-video" class="w-6 h-6 text-blue-500"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-display font-bold mb-2">Multiple Output Formats</h3>
-                        <p class="text-gray-400 text-sm">Export in various formats and resolutions optimized for different social media platforms.</p>
+                        <h3 class="text-lg font-display font-bold mb-2">Optimized for Every Platform</h3>
+                        <p class="text-gray-400 text-sm">Export in the exact formats and resolutions Instagram, TikTok, and YouTube need — no guesswork required.</p>
                     </div>
                 </div>
 
@@ -658,100 +618,104 @@ pipeline.runOnSchedule('0 9 * * *');
                         <i data-lucide="layers" class="w-6 h-6 text-green-500"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-display font-bold mb-2">Batch Processing</h3>
-                        <p class="text-gray-400 text-sm">Process multiple videos at once with consistent settings - save time on bulk conversions.</p>
+                        <h3 class="text-lg font-display font-bold mb-2">Bulk Process in One Click</h3>
+                        <p class="text-gray-400 text-sm">Got 10 videos? Process them all at once with identical settings. Save hours of repetitive editing work.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Video to Reels CTA -->
+    <!-- VIDEO CTA -->
     <section class="py-16 px-6">
         <div class="max-w-3xl mx-auto text-center">
             <a href="#contact" class="btn-glow inline-block px-8 py-4 bg-white text-black font-display font-bold rounded-full hover:scale-105 transition-transform">
-                Transform Your Videos <i data-lucide="arrow-right" class="w-5 h-5 inline ml-2"></i>
+                Turn My Videos Into Reels <i data-lucide="arrow-right" class="w-5 h-5 inline ml-2"></i>
             </a>
         </div>
     </section>
 
-    <!-- SECTION 4: SERVICE TIERS/PACKAGES -->
+    <!-- PRICING -->
     <section id="pricing" class="py-24 px-6 relative" data-aos="fade-up">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-neon-purple/5 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Architect Your Scale</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Select the pipeline configuration that aligns with your brand's velocity.</p>
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Pick Your Growth Plan</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Every plan includes full setup, brand integration, and ongoing management. No hidden fees. No long-term lock-in.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
                 
                 <!-- Tier 1 -->
                 <div class="glass-card p-8 rounded-3xl">
-                    <h3 class="text-2xl font-display font-bold mb-2">Creative Starter</h3>
-                    <p class="text-gray-400 text-sm mb-6">The foundation of automated narrative.</p>
+                    <h3 class="text-2xl font-display font-bold mb-2">Starter</h3>
+                    <p class="text-gray-400 text-sm mb-6">Perfect for brands just getting started with automation.</p>
                     <div class="text-4xl font-display font-black mb-6 border-b border-white/10 pb-6">
-                        Weekly
-                        <span class="text-lg text-gray-500 font-sans font-normal block mt-1">Automations</span>
+                        ₹25,000
+                        <span class="text-lg text-gray-500 font-sans font-normal block mt-1">/month</span>
                     </div>
                     <ul class="space-y-4 mb-8 text-sm text-gray-300">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-gray-500"></i> AI Ideation Engine</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-gray-500"></i> Standard Image Generation</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-gray-500"></i> Basic FFmpeg Logo Overlay</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-gray-500"></i> 1 Platform</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-gray-500"></i> 7 branded posts per week</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-gray-500"></i> AI-generated captions & hashtags</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-gray-500"></i> Your logo on every post</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-gray-500"></i> Auto-post to 1 platform</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-gray-500"></i> Monthly performance report</li>
                     </ul>
-                    <a href="#contact" class="w-full py-3 rounded-full border border-white/20 hover:bg-white/10 transition-colors font-medium text-center block">Get Started</a>
+                    <a href="#contact" class="w-full py-3 rounded-full border border-white/20 hover:bg-white/10 transition-colors font-medium text-center block">Start Growing</a>
                 </div>
 
                 <!-- Tier 2 (Highlighted) -->
                 <div class="glass-card p-1 rounded-3xl bg-gradient-to-b from-neon-cyan to-neon-purple transform md:-translate-y-4 relative shadow-[0_0_40px_rgba(168,85,247,0.2)]">
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-noir-900 text-white border border-white/20 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                        Most Optimal
+                        Best for Growing Brands
                     </div>
                     <div class="bg-noir-900 h-full rounded-[1.4rem] p-8">
-                        <h3 class="text-2xl font-display font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple">Scale Pro</h3>
-                        <p class="text-gray-400 text-sm mb-6">The definitive growth engine.</p>
+                        <h3 class="text-2xl font-display font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple">Growth</h3>
+                        <p class="text-gray-400 text-sm mb-6">For brands ready to dominate their niche.</p>
                         <div class="text-4xl font-display font-black mb-6 border-b border-white/10 pb-6 text-white">
-                            Daily
-                            <span class="text-lg text-gray-500 font-sans font-normal block mt-1">Multi-Platform Pipelines</span>
+                            ₹50,000
+                            <span class="text-lg text-gray-500 font-sans font-normal block mt-1">/month</span>
                         </div>
                         <ul class="space-y-4 mb-8 text-sm text-gray-200">
-                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-cyan"></i> Advanced Artificial Intelligence Prompting</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-cyan"></i> Cinematic Gen (High-Res)</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-cyan"></i> Complex FFmpeg Typography</li>
-                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-cyan"></i> Auto-Posting to Multiple Platforms</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-cyan"></i> 14 premium posts per week</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-cyan"></i> High-res cinematic visuals</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-cyan"></i> Advanced typography & branding</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-cyan"></i> Auto-post to 3 platforms</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-cyan"></i> 4 Reels/month from your videos</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-cyan"></i> Weekly analytics & strategy tweaks</li>
                         </ul>
-                        <a href="#contact" class="btn-glow w-full py-3 rounded-full bg-white text-black font-bold transition-all text-center block">Get Started</a>
+                        <a href="#contact" class="btn-glow w-full py-3 rounded-full bg-white text-black font-bold transition-all text-center block">Scale My Brand</a>
                     </div>
                 </div>
 
                 <!-- Tier 3 -->
                 <div class="glass-card p-8 rounded-3xl">
-                    <h3 class="text-2xl font-display font-bold mb-2">Enterprise Neural</h3>
-                    <p class="text-gray-400 text-sm mb-6">The ultimate unfair advantage.</p>
+                    <h3 class="text-2xl font-display font-bold mb-2">Enterprise</h3>
+                    <p class="text-gray-400 text-sm mb-6">For serious scaling. Custom-built for your business.</p>
                     <div class="text-4xl font-display font-black mb-6 border-b border-white/10 pb-6">
-                        Full-Funnel
-                        <span class="text-lg text-gray-500 font-sans font-normal block mt-1">AI Creativity</span>
+                        ₹1,00,000+
+                        <span class="text-lg text-gray-500 font-sans font-normal block mt-1">/month</span>
                     </div>
                     <ul class="space-y-4 mb-8 text-sm text-gray-300">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-magenta"></i> Custom n8n Node Architecture</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-magenta"></i> Model Fine-Tuning</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-magenta"></i> Complex Video Synthesis</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-magenta"></i> Omnichannel Distribution</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-magenta"></i> Unlimited posts & creatives</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-magenta"></i> Custom AI trained on your brand</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-magenta"></i> Full video production pipeline</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-magenta"></i> Unlimited platforms & accounts</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-neon-magenta"></i> Dedicated account manager</li>
                     </ul>
-                    <a href="#contact" class="w-full py-3 rounded-full border border-white/20 hover:bg-white/10 transition-colors font-medium text-center block">Contact Us</a>
+                    <a href="#contact" class="w-full py-3 rounded-full border border-white/20 hover:bg-white/10 transition-colors font-medium text-center block">Let's Talk</a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- Contact Us Section -->
+    <!-- CONTACT -->
     <section id="contact" class="py-24 px-6" data-aos="fade-up">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Get In Touch</h2>
-                <p class="text-gray-400">Ready to automate your brand? Let's talk.</p>
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Ready to Put Your Social Media on Autopilot?</h2>
+                <p class="text-gray-400">Tell us about your brand — we'll show you exactly how automation can scale it. Free strategy call, no obligation.</p>
             </div>
             <form class="glass-card p-8 rounded-3xl space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -770,28 +734,28 @@ pipeline.runOnSchedule('0 9 * * *');
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-2">Location</label>
-                        <input type="text" name="location" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan transition-colors">
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Brand / Company</label>
+                        <input type="text" name="company" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan transition-colors">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-300 mb-2">Service</label>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">What do you need help with?</label>
                         <select name="service" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-neon-cyan transition-colors">
                             <option value="" class="text-gray-500">Select a service</option>
-                            <option value="creative-starter" class="text-black">Creative Starter</option>
-                            <option value="scale-pro" class="text-black">Scale Pro</option>
-                            <option value="enterprise" class="text-black">Enterprise Neural</option>
-                            <option value="video-to-reels" class="text-black">Video to Reels Automation</option>
-                            <option value="other" class="text-black">Other</option>
+                            <option value="social-media-automation" class="text-black">Social Media Automation</option>
+                            <option value="video-to-reels" class="text-black">Video to Reels Conversion</option>
+                            <option value="both" class="text-black">Both — Full Content Pipeline</option>
+                            <option value="custom" class="text-black">Custom Solution</option>
                         </select>
                     </div>
-</div>
+                </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
-                    <textarea name="message" rows="4" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan transition-colors"></textarea>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Tell us about your brand (optional)</label>
+                    <textarea name="message" rows="4" placeholder="E.g., We post 2x/week and want to scale to daily..." class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan transition-colors"></textarea>
                 </div>
                 <button type="submit" class="btn-glow w-full py-4 bg-white text-black font-display font-bold rounded-full hover:scale-105 transition-transform">
-                    Send Message
+                    Book My Free Strategy Call
                 </button>
+                <p class="text-center text-xs text-gray-500">We respond within 24 hours. Your information stays private.</p>
             </form>
         </div>
     </section>
@@ -804,17 +768,15 @@ pipeline.runOnSchedule('0 9 * * *');
                 DIGIMARKETING <span class="text-white">ART</span>
             </div>
             <div class="text-sm text-gray-500">
-                &copy; 2026 DigiMarketing Art. Code is Law. Aesthetics are Automated.
+                &copy; 2026 DigiMarketing Art. Automated. Scalable. Yours.
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script>
-        // Initialize Icons
         lucide.createIcons();
 
-        // Initialize AOS Animation
         AOS.init({
             duration: 1000,
             once: true,
@@ -823,7 +785,6 @@ pipeline.runOnSchedule('0 9 * * *');
             delay: 100
         });
 
-        // Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const body = document.body;
@@ -838,7 +799,6 @@ pipeline.runOnSchedule('0 9 * * *');
             }
         }
 
-        // Modal functions
         function openModal(src) {
             document.getElementById('modal-img').src = src;
             document.getElementById('image-modal').classList.remove('hidden');
@@ -858,7 +818,6 @@ pipeline.runOnSchedule('0 9 * * *');
             if (e.key === 'Escape') closeModal();
         });
 
-        // Canvas Neural Network Background
         (function() {
             const canvas = document.getElementById('canvas-container');
             const ctx = canvas.getContext('2d');
@@ -920,7 +879,6 @@ pipeline.runOnSchedule('0 9 * * *');
             animate();
         })();
 
-        // Data Rain Animation
         (function() {
             const canvas = document.getElementById('data-rain');
             const ctx = canvas.getContext('2d');
@@ -933,31 +891,12 @@ pipeline.runOnSchedule('0 9 * * *');
                 width = canvas.width = window.innerWidth;
                 height = canvas.height = window.innerHeight;
                 columns = [];
-                
-                // Responsive column spacing
                 let spacing = 20;
                 let fontSize = 16;
-                
-                // Mobile (< 768px)
-                if (width < 768) {
-                    spacing = 12;
-                    fontSize = 10;
-                }
-                // Tablet (768px - 1024px)
-                else if (width < 1024) {
-                    spacing = 15;
-                    fontSize = 12;
-                }
-                // Laptop (1024px - 1440px)
-                else if (width < 1440) {
-                    spacing = 18;
-                    fontSize = 14;
-                }
-                // PC (> 1440px)
-                else {
-                    spacing = 20;
-                    fontSize = 16;
-                }
+                if (width < 768) { spacing = 12; fontSize = 10; }
+                else if (width < 1024) { spacing = 15; fontSize = 12; }
+                else if (width < 1440) { spacing = 18; fontSize = 14; }
+                else { spacing = 20; fontSize = 16; }
                 
                 const columnCount = Math.floor(width / spacing);
                 ctx.font = fontSize + 'px monospace';
@@ -977,24 +916,18 @@ pipeline.runOnSchedule('0 9 * * *');
                 requestAnimationFrame(animate);
                 ctx.fillStyle = 'rgba(10, 10, 10, 0.08)';
                 ctx.fillRect(0, 0, width, height);
-                
-                // Responsive font size
                 let fontSize = 16;
                 if (width < 768) fontSize = 10;
                 else if (width < 1024) fontSize = 12;
                 else if (width < 1440) fontSize = 14;
-                
                 ctx.font = fontSize + 'px monospace';
 
                 for (let i = 0; i < columns.length; i++) {
                     const col = columns[i];
-                    
-                    // Responsive trail length
                     let trailHeight = 80;
                     if (width < 768) trailHeight = 40;
                     else if (width < 1024) trailHeight = 50;
                     else if (width < 1440) trailHeight = 60;
-                    
                     const gradient = ctx.createLinearGradient(col.x, col.y - trailHeight, col.x, col.y);
                     gradient.addColorStop(0, 'rgba(0, 242, 254, 0)');
                     gradient.addColorStop(0.5, 'rgba(0, 242, 254, 1)');
@@ -1004,12 +937,9 @@ pipeline.runOnSchedule('0 9 * * *');
                     ctx.fillText(col.char, col.x, col.y);
                     col.y += col.speed;
                     col.char = charArray[Math.floor(Math.random() * charArray.length)];
-                    
-                    // Responsive reset point
                     let resetPoint = 20;
                     if (width < 768) resetPoint = 10;
                     else if (width < 1024) resetPoint = 15;
-                    
                     if (col.y > height + resetPoint) {
                         col.y = -resetPoint;
                         col.speed = 1 + Math.random() * 3;

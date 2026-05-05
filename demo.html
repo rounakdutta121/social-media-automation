@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMA | Editorial Content Automation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@100;300;600;800&display=swap');
+
+        :root {
+            --accent: #ff4d00; /* Electric Burnt Orange */
+            --bg: #0f0f0f;
+            --text: #e5e5e5;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.2;
+        }
+
+        .font-serif { font-family: 'Italiana', serif; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 0px; }
+
+        /* Smooth Section Transitions */
+        section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8vw 5vw;
+        }
+
+        /* Large Kinetic Text */
+        .kinetic-text {
+            font-size: 15vw;
+            font-weight: 800;
+            white-space: nowrap;
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+        }
+
+        /* Image Masking */
+        .img-reveal {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            background: #1a1a1a;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .img-reveal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.1);
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .img-reveal:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        /* Nav */
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+            display: block;
+        }
+        .nav-link span {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+        .nav-link:hover span {
+            transform: translateY(-100%);
+        }
+        .nav-link::after {
+            content: attr(data-hover);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            color: var(--accent);
+            transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+        .nav-link:hover::after {
+            transform: translateY(-100%);
+        }
+
+        /* Circular Button */
+        .btn-circle {
+            width: 180px;
+            height: 180px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 800;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            background: transparent;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 20px;
+        }
+        .btn-circle:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* Card Brutalism */
+        .card-brutal {
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .card-brutal:hover {
+            border-color: var(--accent);
+            background: rgba(255, 77, 0, 0.05);
+        }
+
+        /* Magnetic Area */
+        .magnetic { display: inline-block; }
+
+        @media (max-width: 768px) {
+            .kinetic-text { font-size: 20vw; }
+        }
+
+        .flying-icon {
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            font-size: 1.25rem;
+            color: #ff4d00;
+            opacity: 0.4;
+            animation: flyAcross linear infinite;
+        }
+
+        @keyframes flyAcross {
+            0% { transform: translateX(-80px) rotate(0deg); }
+            100% { transform: translateX(calc(100vw + 80px)) rotate(360deg); }
+        }
+
+        /* Responsive flying icons */
+        @media (min-width: 768px) {
+            .flying-icon {
+                font-size: 1.5rem;
+                opacity: 0.5;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .flying-icon {
+                font-size: 1.75rem;
+                opacity: 0.6;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .flying-icon {
+                font-size: 1rem;
+                opacity: 0.3;
+            }
+            .flying-icon:nth-child(1),
+            .flying-icon:nth-child(3),
+            .flying-icon:nth-child(5) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-[100] px-8 py-6 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <img src="https://res.cloudinary.com/dadofd9d2/image/upload/v1777959499/Damnart_new_and_final_logo_kpvdvr.png" alt="DigiMarketing Art Logo" class="w-10 h-10 object-contain mix-blend-normal">
+            <div class="flex flex-col leading-none">
+                <span class="text-[10px] font-bold tracking-[0.3em] opacity-50">DIGIMARKETING</span>
+                <h1 class="text-2xl font-bold tracking-tighter">ART</h1>
+            </div>
+        </div>
+        <nav class="hidden md:flex gap-10 text-[10px] font-semibold tracking-widest">
+            <a href="#hero" class="nav-link" data-hover="INDEX">HOME</a>
+            <a href="#gallery" class="nav-link" data-hover="VISUALS">GALLERY</a>
+            <a href="#video-reels" class="nav-link" data-hover="VIRAL">VIDEO TO REELS</a>
+            <a href="#pricing" class="nav-link" data-hover="INVEST">PRICING</a>
+            <a href="#contact" class="nav-link" data-hover="TALK">CONTACT</a>
+        </nav>
+        <div class="text-[10px] tracking-widest opacity-50">EST // 2026</div>
+    </header>
+
+    <!-- Section 1: Hero -->
+    <section id="hero" class="flex-col !justify-end overflow-hidden">
+        <video class="absolute top-0 left-0 w-full h-full object-cover opacity-20 z-0" autoplay loop muted playsinline>
+            <source src="https://res.cloudinary.com/dadofd9d2/video/upload/v1777965237/loopable-real-world-1080p-30fps-silent-video-blurr_h8xghk.mp4" type="video/mp4">
+        </video>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-10">
+            <div class="kinetic-text scroll-left">AUTOMATED • PIPELINES • AUTOMATED</div>
+            <div class="kinetic-text scroll-right">SCALABLE • CREATIVE • SCALABLE</div>
+        </div>
+        
+        <div class="z-10 relative w-full grid grid-cols-1 md:grid-cols-12 gap-4">
+            <div class="md:col-span-8">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-[10px] font-bold tracking-widest uppercase opacity-60">Now accepting 3 brands for Q3 2026</span>
+                </div>
+                <h2 class="text-[clamp(3rem,8vw,10rem)] leading-[0.8] font-serif mb-12">
+                    NEVER WORRY ABOUT<br>
+                    <span class="italic text-white/40">SOCIAL MEDIA</span><br>
+                    AGAIN.
+                </h2>
+            </div>
+            <div class="md:col-span-4 md:col-start-9 self-end mb-12">
+                <p class="text-sm tracking-tight text-gray-400 mb-8 max-w-xs leading-relaxed">
+                    We build automated content pipelines that create, brand, and post stunning social media creatives for you — every single day, with zero effort on your part.
+                </p>
+                <div class="magnetic mb-6">
+                    <button onclick="document.querySelector('#pricing').scrollIntoView({behavior: 'smooth'})" class="btn-circle">
+                        SCALE MY<br>BRAND'S SOCIAL
+                    </button>
+                </div>
+                <p class="text-[9px] uppercase tracking-widest opacity-40">No contracts. Cancel anytime. Results in 7 days or less.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Tech Stack -->
+    <section class="!min-h-[40vh] bg-white text-black py-20">
+        <div class="w-full">
+            <p class="text-[10px] font-bold uppercase tracking-[0.4em] mb-12 opacity-40 text-center">Built on enterprise-grade automation technology</p>
+            <div class="flex flex-wrap justify-center gap-x-16 gap-y-8 items-center">
+                <span class="text-2xl font-bold tracking-tighter italic">n8n Automation</span>
+                <span class="text-2xl font-bold tracking-tighter italic">AI Generation</span>
+                <span class="text-2xl font-bold tracking-tighter italic">Video Processing</span>
+                <span class="text-2xl font-bold tracking-tighter italic">Smart Branding</span>
+                <span class="text-2xl font-bold tracking-tighter italic">Direct Publishing</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The Problem/Solution -->
+    <section id="about" class="flex-col">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-6xl lg:text-8xl font-serif leading-none mb-6 md:mb-8">STILL POSTING<br>MANUALLY?</h2>
+                <div class="space-y-4 md:space-y-6 text-gray-400 max-w-md">
+                    <p class="text-sm md:text-base">You're leaving money on the table. Inconsistent posting, last-minute design chaos, and hiring freelancers who don't get your brand — it all ends today.</p>
+                    <p class="text-sm md:text-base">DigiMarketing Art replaces your entire content workflow. One setup. Your brand guidelines baked into every post. And a system that runs 24/7 while you focus on growing your business.</p>
+                </div>
+            </div>
+            <div class="space-y-12 md:space-y-32 relative z-0">
+                <div class="card-brutal">
+                    <i class="fa-solid fa-bolt text-accent text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Automated Consistency</h3>
+                    <p class="text-sm opacity-60">Never miss a posting day again — automated, guaranteed.</p>
+                </div>
+                <div class="card-brutal">
+                    <i class="fa-solid fa-fingerprint text-accent text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Unified Identity</h3>
+                    <p class="text-sm opacity-60">Your logo, your fonts, your colors — on every single post.</p>
+                </div>
+                <div class="card-brutal">
+                    <i class="fa-solid fa-chart-line text-accent text-3xl mb-6"></i>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Infinite Scale</h3>
+                    <p class="text-sm opacity-60">Scale from 5 posts/week to 30+ without hiring a team.</p>
+                </div>
+                <!-- Roadmap Mockup -->
+                <div class="bg-[#1a1a1a] p-6 md:p-10 border-l-4 border-accent roadmap">
+                    <div class="space-y-4 md:space-y-6 text-white">
+                        <div class="flex gap-4 items-center opacity-40"><span class="font-bold">MON</span> <span class="h-px flex-1 bg-white/20"></span> <span class="text-[10px]">PIPELINE GOES LIVE</span></div>
+                        <div class="flex gap-4 items-center"><span class="font-bold">TUE</span> <span class="h-px flex-1 bg-accent/40"></span> <span class="text-[10px]">7 BRANDED CREATIVES AUTO-POSTED</span></div>
+                        <div class="flex gap-4 items-center"><span class="font-bold">WED</span> <span class="h-px flex-1 bg-white/20"></span> <span class="text-[10px]">ENGAGEMENT UP 40%</span></div>
+                        <div class="flex gap-4 items-center"><span class="font-bold">THU</span> <span class="h-px flex-1 bg-white/20"></span> <span class="text-[10px]">SYSTEM RUNS WHILE YOU SLEEP</span></div>
+                        <div class="flex gap-4 items-center font-bold text-lg md:text-xl"><span>SUN</span> <span class="h-px flex-1 bg-white/20"></span> <span>30 POSTS LIVE.</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Gallery -->
+    <section id="gallery" class="flex-col">
+        <div class="mb-20 text-center w-full">
+            <h2 class="text-5xl md:text-8xl font-serif mb-4">YOUR FUTURE FEED</h2>
+            <p class="text-xs uppercase tracking-[0.4em] opacity-40">Every creative below was AI-generated, branded, and posted automatically.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+            <div class="img-reveal aspect-[4/5]"><img src="ad1.png" alt="Ad 1"></div>
+            <div class="img-reveal aspect-[4/5] mt-12"><img src="ad2.png" alt="Ad 2"></div>
+            <div class="img-reveal aspect-[4/5]"><img src="ad3.png" alt="Ad 3"></div>
+            <div class="img-reveal aspect-[4/5] mt-12"><img src="ad4.png" alt="Ad 4"></div>
+            <div class="img-reveal aspect-[4/5]"><img src="ad5.png" alt="Ad 5"></div>
+            <div class="img-reveal aspect-[4/5] mt-12"><img src="ad6.png" alt="Ad 6"></div>
+            <div class="img-reveal aspect-[4/5]"><img src="ad7.png" alt="Ad 7"></div>
+        </div>
+    </section>
+
+    <!-- Section 5: Process -->
+    <section id="process" class="bg-white text-black flex-col py-16 !min-h-0">
+        <div class="w-full mb-10">
+            <h2 class="text-6xl md:text-8xl font-serif">ON AUTOPILOT</h2>
+            <p class="text-sm font-bold uppercase tracking-widest opacity-40">Four simple steps. Zero manual work.</p>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6 w-full">
+            <div class="space-y-6">
+                <span class="text-5xl font-bold font-serif text-accent/20">01</span>
+                <h4 class="text-xl font-bold uppercase tracking-tighter">Idea Generation</h4>
+                <p class="text-xs opacity-60 leading-relaxed">Our system studies your industry and audience to create content ideas that actually get engagement.</p>
+            </div>
+            <div class="space-y-6">
+                <span class="text-5xl font-bold font-serif text-accent/20">02</span>
+                <h4 class="text-xl font-bold uppercase tracking-tighter">Creative Design</h4>
+                <p class="text-xs opacity-60 leading-relaxed">Beautiful, scroll-stopping visuals are generated automatically — tailored to your brand's feel.</p>
+            </div>
+            <div class="space-y-6">
+                <span class="text-5xl font-bold font-serif text-accent/20">03</span>
+                <h4 class="text-xl font-bold uppercase tracking-tighter">Auto-Branding</h4>
+                <p class="text-xs opacity-60 leading-relaxed">Your logo, fonts, and colors are applied automatically. Every post looks like it came from your team.</p>
+            </div>
+            <div class="space-y-6">
+                <span class="text-5xl font-bold font-serif text-accent/20">04</span>
+                <h4 class="text-xl font-bold uppercase tracking-tighter">Publishing</h4>
+                <p class="text-xs opacity-60 leading-relaxed">Content goes live at optimal times across your social accounts. You wake up to a managed presence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Video to Reels -->
+    <section id="video-reels" class="flex-col items-start overflow-hidden">
+        <div class="w-full grid md:grid-cols-2 gap-20">
+            <div>
+                <h2 class="text-6xl md:text-8xl font-serif leading-none mb-12">REELS FROM<br><span class="italic text-accent">EXISTING</span> VIDEO</h2>
+                <p class="text-gray-400 mb-8 max-w-md">Your long-form content already has gold inside it. We extract the best moments, add subtitles, and format them for Reels — 10x reach, 0x effort.</p>
+                
+                <div class="flex gap-4 mb-12">
+                    <span class="px-4 py-2 bg-white/5 border border-white/10 text-[10px] font-bold tracking-widest uppercase">AI-Powered</span>
+                    <span class="px-4 py-2 bg-white/5 border border-white/10 text-[10px] font-bold tracking-widest uppercase">Auto Transcription</span>
+                    <span class="px-4 py-2 bg-white/5 border border-white/10 text-[10px] font-bold tracking-widest uppercase">Smart Editing</span>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="flex gap-6 items-start">
+                        <span class="text-accent font-bold">01</span>
+                        <div>
+                            <h5 class="font-bold text-xs uppercase mb-1">Drop Your Video</h5>
+                            <p class="text-[10px] opacity-40">Upload any long-form content — podcasts, webinars, tutorials.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <span class="text-accent font-bold">02</span>
+                        <div>
+                            <h5 class="font-bold text-xs uppercase mb-1">AI Finds the Gold</h5>
+                            <p class="text-[10px] opacity-40">AI transcribes and identifies the most shareable moments automatically.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <span class="text-accent font-bold">03</span>
+                        <div>
+                            <h5 class="font-bold text-xs uppercase mb-1">Auto-Edit & Format</h5>
+                            <p class="text-[10px] opacity-40">Clips are cut to 9:16 vertical, subtitles added, and color graded.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="img-reveal aspect-[9/16] max-w-[400px] mx-auto border-4 border-[#222]">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop" alt="Reel Mockup">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex flex-col justify-end p-8">
+                        <div class="w-full h-1 bg-white/30 mb-4 overflow-hidden"><div class="w-1/3 h-full bg-accent"></div></div>
+                        <p class="text-xl font-bold italic leading-tight text-white">"This is how we automated our $50k/month pipeline..."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Pricing -->
+    <section id="pricing" class="flex-col bg-white text-black">
+        <div class="text-center mb-20 w-full">
+            <h2 class="text-6xl md:text-8xl font-serif mb-4">PICK YOUR GROWTH</h2>
+            <p class="text-xs uppercase tracking-[0.4em] opacity-40">No hidden fees. No long-term lock-in. Results in 7 days.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8 w-full items-stretch">
+            <!-- Starter -->
+            <div class="card-brutal border-black flex flex-col">
+                <h4 class="text-2xl font-bold uppercase mb-2">Starter</h4>
+                <p class="text-[10px] opacity-60 mb-8 uppercase font-bold">Entry-level automation</p>
+                <div class="text-4xl font-serif mb-8">Monthly</div>
+                <ul class="text-xs space-y-4 mb-12 flex-1">
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> 30 branded posts per month</li>
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> AI-generated captions & hashtags</li>
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> Your logo on every post</li>
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> Auto-post to 1 platform</li>
+                </ul>
+                <button onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})" class="w-full border border-black py-4 font-bold uppercase text-[10px] tracking-widest hover:bg-black hover:text-white transition-colors">Start Growing</button>
+            </div>
+            <!-- Growth -->
+            <div class="card-brutal border-accent bg-accent/5 flex flex-col relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-accent text-white text-[9px] font-bold px-4 py-1 uppercase tracking-tighter">Best Seller</div>
+                <h4 class="text-2xl font-bold uppercase mb-2">Growth</h4>
+                <p class="text-[10px] text-accent mb-8 uppercase font-bold">Dominate your niche</p>
+                <div class="text-4xl font-serif mb-8">Weekly</div>
+                <ul class="text-xs space-y-4 mb-12 flex-1">
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> 14 premium posts per week</li>
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> High-res cinematic visuals</li>
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> Auto-post to 3 platforms</li>
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> 4 Reels/month from your video</li>
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> Weekly strategy tweaks</li>
+                </ul>
+                <button onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})" class="w-full bg-black text-white py-4 font-bold uppercase text-[10px] tracking-widest hover:opacity-90 transition-opacity">Scale My Brand</button>
+            </div>
+            <!-- Enterprise -->
+            <div class="card-brutal border-black flex flex-col">
+                <h4 class="text-2xl font-bold uppercase mb-2">Enterprise</h4>
+                <p class="text-[10px] opacity-60 mb-8 uppercase font-bold">Custom built for power</p>
+                <div class="text-4xl font-serif mb-8">Daily</div>
+                <ul class="text-xs space-y-4 mb-12 flex-1">
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> Unlimited posts & creatives</li>
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> Custom AI trained on your brand</li>
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> Full video production pipeline</li>
+                    <li><i class="fa-solid fa-check text-accent mr-2"></i> Dedicated account manager</li>
+                </ul>
+                <button onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})" class="w-full border border-black py-4 font-bold uppercase text-[10px] tracking-widest hover:bg-black hover:text-white transition-colors">Let's Talk</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Contact -->
+    <section id="contact" class="!min-h-[100vh] flex-col items-start bg-[#0f0f0f]">
+        <div class="mb-20">
+            <h2 class="text-6xl md:text-9xl font-serif leading-none">GET STARTED.</h2>
+            <p class="text-accent font-bold tracking-widest text-sm mt-4 uppercase">Initializing Strategy Engine</p>
+        </div>
+
+        <div class="w-full grid md:grid-cols-2 gap-20">
+            <div class="space-y-12">
+                <p class="text-white/90 max-w-sm">Tell us about your brand — we'll show you exactly how automation can scale it. Free strategy call, no obligation.</p>
+                <div class="space-y-6">
+<div>
+                    <p class="text-[9px] text-white/60 uppercase font-bold mb-2">Office</p>
+                    <div class="space-y-4 text-sm text-gray-200">
+                        <div>
+                            <p class="font-bold text-white/90">India</p>
+                            <p>SCO No. 09-Ground Floor, Aero View Plaza, Airport Road, Dyalpura, Punjab - 140603</p>
+                            <p>Call us +91-90565-44487</p>
+                            <p>310 - Sampada, Navarangpura, Ahmedabad, Gujarat - 380009</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white/90">UK</p>
+                            <p>20-22 Wenlock Road, Hoxton, London N1 7GU</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white/90">USA</p>
+                            <p>616, Corporate Way Suite 2, 6015 Valley Cottage NY 10989</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white/90">Canada</p>
+                            <p>8449, 116 A Street, Delta - V4C7N7, Greater Vancouver</p>
+                            <p>Call us +1 (778) 798-9624</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white/90">Dubai</p>
+                            <p>Suite No 2902 and 2903, The Prism Tower, Business Bay, Dubai, UAE</p>
+                        </div>
+                    </div>
+                </div>
+                    <div>
+                        <p class="text-[9px] text-gray-500 uppercase font-bold mb-2">Contact</p>
+                        <p class="text-xl underline underline-offset-8">info@digimarketingart.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <form id="contactForm" class="space-y-8 bg-gray-100 p-8 border border-gray-300">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" placeholder="NAME" class="w-full bg-transparent border-b border-gray-400 py-4 focus:outline-none focus:border-accent text-[10px] tracking-widest uppercase text-black">
+                    <input type="email" placeholder="EMAIL" class="w-full bg-transparent border-b border-gray-400 py-4 focus:outline-none focus:border-accent text-[10px] tracking-widest uppercase text-black">
+                </div>
+                <input type="text" placeholder="PHONE" class="w-full bg-transparent border-b border-gray-400 py-4 focus:outline-none focus:border-accent text-[10px] tracking-widest uppercase text-black">
+                <input type="text" placeholder="BRAND / COMPANY" class="w-full bg-transparent border-b border-gray-400 py-4 focus:outline-none focus:border-accent text-[10px] tracking-widest uppercase text-black">
+                <select class="w-full bg-transparent border-b border-gray-400 py-4 focus:outline-none focus:border-accent text-[10px] tracking-widest uppercase appearance-none text-black">
+                    <option>SELECT SERVICE NEED</option>
+                    <option>STATIC CONTENT AUTOMATION</option>
+                    <option>VIDEO TO REELS PIPELINE</option>
+                    <option>FULL ENTERPRISE SETUP</option>
+                </select>
+                <textarea rows="2" placeholder="TELL US ABOUT THE BRAND (OPTIONAL)" class="w-full bg-transparent border-b border-gray-400 py-4 focus:outline-none focus:border-accent text-[10px] tracking-widest uppercase text-black"></textarea>
+                
+                <button type="submit" class="w-full bg-black text-white py-5 font-bold uppercase text-xs tracking-[0.3em] group flex items-center justify-center gap-4 hover:bg-gray-800 transition-colors">
+                    SUBMIT REQUEST <i class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                </button>
+                <p class="text-[9px] text-gray-600 text-center uppercase tracking-widest">We respond within 24 hours. Your information stays private.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="p-10 flex flex-col md:flex-row justify-between items-center border-t border-white/10 bg-black text-white">
+        <div class="flex items-center gap-3 mb-8 md:mb-0">
+            <img src="https://res.cloudinary.com/dadofd9d2/image/upload/v1777959499/Damnart_new_and_final_logo_kpvdvr.png" alt="DigiMarketing Art Logo" class="w-8 h-8 object-contain">
+            <div class="flex flex-col">
+                <span class="text-[9px] font-bold tracking-[0.4em]">DIGIMARKETING ART</span>
+                <span class="text-[9px] opacity-80">© 2026 DigiMarketing Art. Automated. Scalable. Yours.</span>
+            </div>
+        </div>
+        <div class="flex gap-10 text-[9px] font-bold tracking-widest uppercase">
+            <a href="#" class="hover:text-accent transition-colors">Twitter</a>
+            <a href="#" class="hover:text-accent transition-colors">LinkedIn</a>
+            <a href="#" class="hover:text-accent transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-accent transition-colors">Terms of Service</a>
+        </div>
+    </footer>
+
+    <!-- Load GSAP at end of body -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+        function initApp() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Kinetic Scrolling Text
+            gsap.to(".scroll-left", {
+                xPercent: -50,
+                ease: "none",
+                scrollTrigger: { trigger: "#hero", start: "top top", end: "bottom top", scrub: 1 }
+            });
+
+            gsap.to(".scroll-right", {
+                xPercent: 50,
+                ease: "none",
+                scrollTrigger: { trigger: "#hero", start: "top top", end: "bottom top", scrub: 1 }
+            });
+
+            // Hero section: always dark
+            ScrollTrigger.create({
+                trigger: "#hero",
+                start: "top top",
+                end: "bottom top",
+                onEnter: () => gsap.to("body", { backgroundColor: "#0f0f0f", color: "#e5e5e5", duration: 0.5 }),
+                onEnterBack: () => gsap.to("body", { backgroundColor: "#0f0f0f", color: "#e5e5e5", duration: 0.5 }),
+                onLeave: () => gsap.to("body", { backgroundColor: "#ffffff", color: "#000000", duration: 0.5 })
+            });
+
+            // About section: Desktop only (avoid mobile overlap)
+            ScrollTrigger.matchMedia({
+                "(min-width: 1024px)": function() {
+                    ScrollTrigger.create({
+                        trigger: "#about",
+                        start: "top center",
+                        end: "bottom center",
+                        onEnter: () => gsap.to("body", { backgroundColor: "#ffffff", color: "#000000", duration: 0.5 }),
+                        onLeaveBack: () => gsap.to("body", { backgroundColor: "#0f0f0f", color: "#e5e5e5", duration: 0.5 })
+                    });
+                }
+            });
+
+            ScrollTrigger.create({
+                trigger: "#gallery",
+                start: "top center",
+                end: "bottom center",
+                onEnter: () => gsap.to("body", { backgroundColor: "#0f0f0f", color: "#e5e5e5", duration: 0.5 }),
+                onLeaveBack: () => gsap.to("body", { backgroundColor: "#ffffff", color: "#000000", duration: 0.5 })
+            });
+
+            ScrollTrigger.create({
+                trigger: "#process",
+                start: "top center",
+                end: "bottom center",
+                onEnter: () => gsap.to("body", { backgroundColor: "#ffffff", color: "#000000", duration: 0.5 }),
+                onLeaveBack: () => gsap.to("body", { backgroundColor: "#0f0f0f", color: "#e5e5e5", duration: 0.5 })
+            });
+
+            ScrollTrigger.create({
+                trigger: "#pricing",
+                start: "top center",
+                end: "bottom center",
+                onEnter: () => gsap.to("body", { backgroundColor: "#ffffff", color: "#000000", duration: 0.5 }),
+                onLeaveBack: () => gsap.to("body", { backgroundColor: "#0f0f0f", color: "#e5e5e5", duration: 0.5 })
+            });
+
+            ScrollTrigger.create({
+                trigger: "#video-reels",
+                start: "top center",
+                end: "bottom center",
+                onEnter: () => gsap.to("body", { backgroundColor: "#0f0f0f", color: "#e5e5e5", duration: 0.5 }),
+                onLeaveBack: () => gsap.to("body", { backgroundColor: "#ffffff", color: "#000000", duration: 0.5 })
+            });
+
+            ScrollTrigger.create({
+                trigger: "#contact",
+                start: "top center",
+                onEnter: () => gsap.to("body", { backgroundColor: "#0f0f0f", color: "#e5e5e5", duration: 0.5 }),
+                onLeaveBack: () => gsap.to("body", { backgroundColor: "#0f0f0f", color: "#e5e5e5", duration: 0.5 })
+            });
+
+            // Flying Icons
+            animateFlyingIcons();
+
+            // Magnetic Elements
+            const magnetics = document.querySelectorAll('.magnetic');
+            magnetics.forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+                    const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+                    gsap.to(el, { x: x, y: y, duration: 0.5, ease: "power2.out" });
+                });
+                el.addEventListener('mouseleave', () => {
+                    gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: "power2.out" });
+                });
+            });
+        }
+
+        window.onload = initApp;
+
+        // Flying Social Icons Animation
+        function animateFlyingIcons() {
+            const icons = document.querySelectorAll('.flying-icon');
+            icons.forEach((icon, index) => {
+                const speed = parseFloat(icon.dataset.speed);
+                const yPos = icon.dataset.y;
+                const yValue = yPos === '10' ? '10%' : yPos === '20' ? '20%' : yPos === '30' ? '30%' : yPos === '45' ? '45%' : yPos === '60' ? '60%' : '70%';
+
+                // Set initial position
+                gsap.set(icon, {
+                    left: '-50px',
+                    top: yValue,
+                    rotation: Math.random() * 360
+                });
+
+                // Animate across screen
+                gsap.to(icon, {
+                    left: window.innerWidth + 50 + 'px',
+                    rotation: '+=360',
+                    duration: speed,
+                    ease: 'none',
+                    repeat: -1,
+                    delay: index * 2
+                });
+            });
+        }
+
+        // Smooth Anchor Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+<div id="flying-icons" class="pointer-events-none">
+  <i class="flying-icon fab fa-instagram" style="top: 10%; animation-duration: 8s; animation-delay: 0s;"></i>
+  <i class="flying-icon fab fa-facebook" style="top: 30%; animation-duration: 10s; animation-delay: 1s;"></i>
+  <i class="flying-icon fab fa-twitter" style="top: 60%; animation-duration: 6s; animation-delay: 2s;"></i>
+  <i class="flying-icon fab fa-linkedin" style="top: 20%; animation-duration: 9s; animation-delay: 3s;"></i>
+  <i class="flying-icon fab fa-tiktok" style="top: 70%; animation-duration: 12s; animation-delay: 4s;"></i>
+  <i class="flying-icon fab fa-youtube" style="top: 45%; animation-duration: 7s; animation-delay: 5s;"></i>
+</div>
+<a href="https://api.whatsapp.com/send/?phone=919056544487&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-[110] w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
+  <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+</a>
+</body>
+</html>
